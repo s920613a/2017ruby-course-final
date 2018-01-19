@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default" style="font-family:微軟正黑體">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">腳踏車租賃系統</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href=rents>租車/還車</a></li>
+      <li class="active"><a href="#">會員管理</a></li>
+      <li><a href=bikes>車輛管理</a></li>
+      <li><a href=suppliers>合作供應商</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container">
+
+<div style="text-align:center; font-family:微軟正黑體"><%= link_to "新增會員", new_customer_path, class: "btn btn-info" %></div></br>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <td>會員編號</td>
+      <td>會員姓名</td>
+      <td>身分證字號</td>
+      <td>電話</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.id %></td>
+        <td><%= customer.cusName %></td>
+        <td><%= customer.cusID %></td>
+        <td><%= customer.cusTel %></td>
+        <!--td><%= customer.created_at %></td-->
+        <td><%= link_to "編輯", edit_customer_path(customer), class: "btn btn-warning" %></td>
+        <td><%= link_to "刪除", customer_path(customer), method: "delete", data: {confirm: "是否刪除此會員？"}, class: "btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+
+</div>

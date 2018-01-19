@@ -1,0 +1,57 @@
+<nav class="navbar navbar-default" style="font-family:微軟正黑體">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">腳踏車租賃系統</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">租車/還車</a></li>
+      <li><a href=customers>會員管理</a></li>
+      <li><a href=bikes>車輛管理</a></li>
+      <li><a href=suppliers>合作供應商</a></li>
+    </ul>
+  </div>
+</nav>
+<!--div style="text-align:center; font-family:微軟正黑體"><h1>腳踏車租賃系統</h1></div-->
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body" style="text-align:center;">
+        *腳踏車租借：$100/小時，$50/半小時。時間未滿一小時以半小時計費。
+    </div>
+  </div>
+
+  <div style="text-align:center; font-family:微軟正黑體"><%= link_to "租借腳踏車", new_rent_path, class: "btn btn-info" %></div></br>
+  <table class = "table">
+    <thead>
+      <tr>
+        <td>會員編號</td>
+        <td>車種編號</td>
+        <td>借出日期</td>
+        <td>歸還日期</td>
+        <td>價格</td>
+        <td>處理</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rents.each do |rent| %>
+        <tr>
+          <td><%= rent.cusName %></td>
+          <td><%= rent.bikeType %></td>
+          <td><%= rent.created_at %></td>
+          <td><%= rent.backtime %></td>
+          <td><%= rent.price %></td>
+          <% if rent.backtime.nil? %>
+            <td><%= link_to "歸還", back_rent_path(rent), method: "post", data: {confirm: "確定已歸還？"}, class: "btn btn-warning" %></td>
+            <td><%= link_to "取消租借", rent_path(rent), method: "delete", data: {confirm: "是否取消此次租借？"}, class: "btn btn-danger"%></td>
+          <% else %>
+              <td></td>
+              <td><%= link_to "刪除", rent_path(rent), method: "delete", data: {confirm: "是否刪除此筆紀錄？"}, class: "btn btn-danger"%></td>
+          <% end %>
+
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</div>

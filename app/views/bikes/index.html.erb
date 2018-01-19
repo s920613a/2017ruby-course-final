@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default" style="font-family:微軟正黑體">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">腳踏車租賃系統</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href=rents>租車/還車</a></li>
+      <li><a href=customers>會員管理</a></li>
+      <li class="active"><a href="#">車輛管理</a></li>
+      <li><a href=suppliers>合作供應商</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div style="text-align:center; font-family:微軟正黑體"><%= link_to "新增車種", new_bike_path, class: "btn btn-info" %></div></br>
+  <table class = "table">
+    <thead>
+      <tr>
+        <td>車種編號</td>
+        <td>車種型號</td>
+        <td>數量</td>
+        <td>供應商</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bikes.each do |bike| %>
+        <tr>
+          <td><%= bike.id %></td>
+          <td><%= bike.bikeType %></td>
+          <td><%= bike.quantity %></td>
+          <td><%= bike.supName %></td>
+          <td><%= link_to "編輯", edit_bike_path(bike), class: "btn btn-warning" %></td>
+          <td><%= link_to "刪除", bike_path(bike), method: "delete", data: {confirm: "Delete it or not?"}, class: "btn btn-danger"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+    </tfoot>
+  </table>
+</div>

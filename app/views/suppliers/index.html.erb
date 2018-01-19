@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default" style="font-family:微軟正黑體">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">腳踏車租賃系統</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href=rents>租車/還車</a></li>
+      <li><a href=customers>會員管理</a></li>
+      <li><a href=bikes>車輛管理</a></li>
+      <li class="active"><a href="#">合作供應商</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+<div style="text-align:center; font-family:微軟正黑體"><%= link_to "新增供應商", new_supplier_path, class: "btn btn-info" %></div></br>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <td>供應商編號</td>
+      <td>供應商名稱</td>
+      <td>電話</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @suppliers.each do |supplier| %>
+      <tr>
+        <td><%= supplier.id %></td>
+        <td><%= supplier.supName %></td>
+        <td><%= supplier.supTel %></td>
+        <td><%= link_to "編輯", edit_supplier_path(supplier), class: "btn btn-warning" %></td>
+        <td><%= link_to "刪除", supplier_path(supplier), method: "delete", data: {confirm: "是否刪除此供應商？"}, class: "btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+
+</div>

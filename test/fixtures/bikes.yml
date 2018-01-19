@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bikeType: MyString
+  quantity: 1
+  sup_id: one
+
+two:
+  bikeType: MyString
+  quantity: 1
+  sup_id: two

@@ -1,0 +1,9 @@
+<%= simple_form_for customer do |f| %>
+  <%= f.input :cusName, label: '會員姓名' %><br />
+  <%= f.input :cusID, label: '身分證字號' %><br />
+  <%= f.input :cusTel, label: '電話' %><br />
+  <div style="text-align:center;">
+    <%= f.button:submit, "新增會員", class:"btn btn-success btn-lg"%>
+    <%= link_to "返回", customers_path, class: "btn btn-info btn-lg" %>
+  </div>
+<% end %>
